@@ -13,10 +13,10 @@ Anyone can use this code if they want to. */
 /* This function will give us driver control. */
 void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)// gives user control
 {
-	while (true)
+	while (true) //Do forever
 	{
 		motor[RightMotor] = vexRT[Ch2];
-		motor[LeftMotor] = vexRT[Ch3];
+		motor[LeftMotor] = vexRT[Ch3]; //Give control of drivetrain motors.
 		motor[ArmMotor] = 0;
 		motor[ActMotor] = 0;
 		if (vexRT[Btn5U] == 1)
