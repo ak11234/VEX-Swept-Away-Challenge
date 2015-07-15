@@ -9,6 +9,8 @@
 
 /*Code for Swept Away VEX Challenge CTD: By Archan Das and Adam Kalman.
 Anyone can use this code if they want to. */
+
+/* This function will give us driver control. */
 void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)// gives user control
 {
 	while (true)
@@ -45,13 +47,14 @@ void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)// 
 }
 int t = 0;
 
-
+//Begin the code
 task main()
 {
-	//autonomous code, should start right next to a ball pointing at it.
-	clearTimer(T4);
-	while (t < 17500)
+	//Autonomous code, should start right next to a ball pointing at it.
+	clearTimer(T4); //Clear the timer so we can use it
+	while (t < 17500) //While it has not been the 20 sec autonomous period.
 	{
+		// The code below goes to get balls.
 		motor[LeftDrive] = 50;
 		motor[RightDrive] = 50;
 		wait1Msec(100);
@@ -61,6 +64,7 @@ task main()
 		motor[LeftDrive] = 127;
 		motor[RightDrive] = -127;
 		wait1Msec(900);
+		//Now, the robot will find the goal.
 		while(SensorValue[LineFollower]<1500)
 		{
 			motor[LeftDrive] = 127;
@@ -81,7 +85,10 @@ task main()
 
 	}
 
-	//gives user control.
+	/*20 Sec. Autonomous period has ended, so now we begin
+	the user controlled period. This will run infinetly.
+	The drivercontrol code can be found above.
+	(Outside of the main function)*/
 	drivercontrol(LeftDrive, RightDrive, ArmMotor, ActMotor);
 
 }
