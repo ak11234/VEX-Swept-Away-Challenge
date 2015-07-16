@@ -11,21 +11,20 @@
 Anyone can use this code if they want to. */
 
 /* This function will give us driver control. */
-void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)// gives user control
+void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)
 {
 	while (true) //Do forever
 	{
 		motor[RightMotor] = vexRT[Ch2];
 		motor[LeftMotor] = vexRT[Ch3]; //Give control of drivetrain motors.
-		motor[ArmMotor] = 0;
-		motor[ActMotor] = 0;
+		//The code below allows us to control the arm and scoop
 		if (vexRT[Btn5U] == 1)
 		{
-			motor[ArmMotor] = 127;
+			motor[ArmMotor] = 127; //Raise the arm
 		}
 		else if(vexRT[Btn5D] == 1)
 		{
-			motor[ArmMotor] = -127;
+			motor[ArmMotor] = -127; //Lower the arm motor
 		}
 		else
 		{
@@ -33,11 +32,11 @@ void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)// 
 		}
 		if (vexRT[Btn6U] == 1)
 		{
-			motor[ActMotor] = 127;
+			motor[ActMotor] = 127; //Tilt the scoop up
 		}
 		else if (vexRT[Btn6D] == 1)
 		{
-			motor[ActMotor] = -127;
+			motor[ActMotor] = -127; //Tilt the scoop down
 		}
 		else
 		{
@@ -68,18 +67,18 @@ task main()
 		while(SensorValue[LineFollower]<1500)
 		{
 			motor[LeftDrive] = 127;
-			motor[RightDrive] = 127;
+			motor[RightDrive] = 127; //Drive until we find the line
 		}
 		motor[LeftDrive] = -127;
-		motor[RightDrive] = 127;
+		motor[RightDrive] = 127; //Turn in place
 		wait1Msec(600);
 		while (SensorValue[Bump] == 0)
 		{
-			motor[LeftDrive] = 127;
+			motor[LeftDrive] = 127; //Travel fowards until we hit the wall.
 			motor[RightDrive] = 127;
 		}
 		motor[ArmMotor] = -50;
-		motor[ActMotor] = -127;
+		motor[ActMotor] = -127; //Raise the arm, and dump the scoop
 		wait1Msec(500);
 		t = time1[T4];
 
