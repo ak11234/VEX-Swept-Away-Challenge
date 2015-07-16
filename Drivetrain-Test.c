@@ -26,43 +26,75 @@ void zeropointturn (int speed, int time, bool direction) {
 }
 void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)
 {
-		while (true) //Do forever
+	while (true) //Do forever
+	{
+		motor[ArmMotor] = vexRT[Ch2];
+		motor[ActMotor] = vexRT[Ch3]; //Give control of drivetrain motors.
+		//The code below allows us to control the arm and scoop
+		if (vexRT[Btn5U] == 1)
 		{
-			motor[ArmMotor] = vexRT[Ch2];
-			motor[ActMotor] = vexRT[Ch3]; //Give control of drivetrain motors.
-			//The code below allows us to control the arm and scoop
-			if (vexRT[Btn5U] == 1)
+			zeropointturn(127, -1, true);
+		}
+		else if(vexRT[Btn5D] == 1)
+		{
+			zeropointturn(63, -1, true);
+		}
+		else
+		{
+			setmotorspeed(0);
+		}
+		if (vexRT[Btn6U] == 1)
+		{
+			zeropointturn(127, -1, false);
+		}
+		else if (vexRT[Btn6D] == 1)
+		{
+			zeropointturn(63, -1, false);
+		}
+		else
+		{
+			setmotorspeed(0);
+		}
+		if (vexRT[Btn8U] == 1)
+		{
+			motor[RightDrive] = 127;
+		}
+		else if (vexRT[Btn8D] == 1) {
+			motor[RightDrive] = -127;
+		}
+		else if (vexRT[Btn8R] == 1) {
+			motor[RightDrive] = 63;
+		}
+		else if (vexRT[Btn8L] == 1) {
+			motor[RightDrive] = -63;
+		}
+		else {
+			motor[RightDrive] = 0;
+		}
+		if (vexRT[Btn7U] == 1)
 			{
-				zeropointturn(127, -1, true);
+				motor[LeftDrive] = 127;
 			}
-			else if(vexRT[Btn5D] == 1)
-			{
-				zeropointturn(63, -1, true);
-			}
-			else
-			{
-				setmotorspeed(0);
-			}
-			if (vexRT[Btn6U] == 1)
-			{
-				zeropointturn(127, -1, false);
-			}
-			else if (vexRT[Btn6D] == 1)
-			{
-				zeropointturn(63, -1, false);
-			}
-			else
-			{
-				setmotorspeed(0);
-			}
+		else if (vexRT[Btn7D] == 1) {
+			motor[LeftDrive] = -127;
+		}
+		else if (vexRT[Btn7R] == 1) {
+			motor[LeftDrive] = 63;
+		}
+		else if (vexRT[Btn7L] == 1) {
+			motor[LeftDrive] = -63;
+		}
+		else {
+			motor[LeftDrive] = 0;
 		}
 	}
-	/*The setmotorspeed function simply sets the speed of both
-	motors at once. Saving space and time. (For the coder)*/
-	//Begin the code
-	task main()
-	{
+}
+		/*The setmotorspeed function simply sets the speed of both
+		motors at once. Saving space and time. (For the coder)*/
+		//Begin the code
+		task main()
+		{
 
-		drivercontrol(LeftDrive, RightDrive, ArmMotor, ActMotor);
+			drivercontrol(LeftDrive, RightDrive, ArmMotor, ActMotor);
 
-	}
+		}
