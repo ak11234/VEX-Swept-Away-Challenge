@@ -59,6 +59,34 @@ void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)
 			{
 				motor[RightDrive] = 127;
 			}
+			else if (vexRT[Btn8D] == 1) {
+				motor[RightDrive] = -127;
+			}
+			else if (vexRT[Btn8R] == 1)
+				motor[RightDrive] = 63;
+			}
+			else if (vexRT[Btn8L] == 1) {
+				motor[RightDrive] = -63;
+			}
+			else {
+				motor[RightDrive] = 0;
+			}
+			if (vexRT[Btn7U] == 1)
+			{
+				motor[LeftDrive] = 127;
+			}
+			else if (vexRT[Btn7D] == 1) {
+				motor[LeftDrive] = -127;
+			}
+			else if (vexRT[Btn7R] == 1)
+				motor[LeftDrive] = 63;
+			}
+			else if (vexRT[Btn7L] == 1) {
+				motor[LeftDrive] = -63;
+			}
+			else {
+				motor[LeftDrive] = 0;
+			}
 		}
 	}
 	int t = 0;
