@@ -43,7 +43,7 @@ void drivercontrol(int LeftMotor, int RightMotor, int ArmMotor, int ActMotor)
 		}
 	}
 }
-int t = 0;
+//int t = 0;
 
 //Begin the code
 task main()
