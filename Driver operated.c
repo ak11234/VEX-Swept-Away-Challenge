@@ -1,6 +1,5 @@
 #pragma config(Sensor, in1,    LineFollower,   sensorLineFollower)
 #pragma config(Sensor, dgtl1,  Bump,           sensorTouch)
-#pragma config(Sensor, dgtl3,  Sonar,          sensorSONAR_inch)
 #pragma config(Motor,  port1,           LeftDrive,     tmotorVex393_HBridge, openLoop, reversed, driveLeft)
 #pragma config(Motor,  port3,           ArmMotor,      tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port4,           ActMotor,      tmotorVex393_MC29, openLoop)
